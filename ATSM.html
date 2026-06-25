@@ -91,7 +91,20 @@ body {
     display: inline-block;
 }
 
-/* Совет */
+/* Встроенное видео */
+.video-container {
+    margin-top: 30px; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+}
+.video-container video {
+    width: 100%; 
+    max-width: 800px; 
+    height: auto;
+}
+
+/* Остальной стиль остаётся без изменений */
 .advice-block {
     margin-bottom: 35px;
     font-size: 1.2rem;
@@ -244,33 +257,6 @@ body {
     margin: 10px auto 0;
     border-radius: 2px;
 }
-body.dark-mode .spoilers-title::after {
-    background: linear-gradient(135deg, #ff3b3b, #ffa500, #ffff00, #00ff00, #007bff, #8a2be2);
-}
-.spoilers-gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.spoilers-item {
-    aspect-ratio: 4/3;
-    width: 100%;
-    max-width: 400px;
-    overflow: hidden;
-    box-shadow: var(--gallery-shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-.spoilers-item:hover {
-    transform: scale(1.03);
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
-}
-.spoilers-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
 </style>
 </head>
 <body>
@@ -286,6 +272,14 @@ body.dark-mode .spoilers-title::after {
     <!-- Метаданные -->
     <div class="meta-info">
         Год выпуска: 2026 • Продолжительность: 4 мин 33 сек
+    </div>
+
+    <!-- Встроенное видео из файла ATSM.mp4 -->
+    <div class="video-container">
+      <video controls>
+        <source src="ATSM.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает тег видео.
+      </video>
     </div>
 
     <!-- Совет -->
