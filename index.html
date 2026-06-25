@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Коробка</title>
+<style>
+/* --- style.css --- */
+
+/* --- Переменные для тёмной темы --- */
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --border-color: #444;
+    --section-bg: transparent; /* убрано фоновое заливка */
+    --list-item-border: #555;
+    --dashed-border: #555;
+    --circle-default-bg: #2a2a2a;
+    --footer-border: #555;
+    --link-color: #66b2ff;
+
+    --shadow-light: 0 4px 6px rgba(255, 255, 255, 0.1);
+    --shadow-dark: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Тема тёмная, контакты убраны */
+
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    line-height: 1.4;
+}
+
+/* Контейнеры и секции */
+.main-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Секции */
+.section-block {
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+    padding: 15px;
+}
+
+/* Заголовки */
+h1, h2 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* Элементы списков */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 4px 8px;
+    border: 1px solid var(--list-item-border);
+    margin-bottom: 4px;
+    transition: border-color 0.3s ease;
+}
+
+/* Элементы событий */
+.event-item {
+    margin-bottom: 6px;
+    /* Убрана граница */
+    /* border: 1px solid var(--border-color); */
+    padding: 4px 8px;
+    cursor: pointer;
+    position: relative; /* для позиционирования кружка */
+    /* Удалены трансформации */
+    /* transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); */
+    background: transparent; /* убрано фоновые плашки */
+    box-shadow: none; /* убраны тени */
+}
+
+/* Плавающий жёлтый кружок в правом нижнем углу */
+.highlight-dot {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: yellow;
+    border-radius: 50%;
+    border: 1px solid #999; /* чуть темнее для контраста */
+}
+
+/* Подвал без контактов */
+
+footer {
+    margin-top: 30px;
+    border-top: 1px solid var(--footer-border);
+    padding-top: 8px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+/* Ссылки */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Контейнер для "Коробки" */
+.box-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* Круглая область */
+.circle-area {
+    width: 120px;
+    height: 120px;
+    border-radius: 0;
+    overflow: hidden;
+    background-color: var(--circle-default-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Удалены трансформации */
+    /* transition: transform 0.3s ease; */
+    margin-bottom: 8px;
+}
+
+.circle-area:hover {
+    /* Убрана трансформация scale */
+    /* transform: scale(1.05); */
+}
+
+.circle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Удалена трансформация scale */
+    /* transition: transform 0.5s ease; */
+}
+
+.circle-area:hover .circle-img {
+    /* transform: scale(1.1); */
+}
+
+/* Текст под изображением */
+.box-text {
+    margin-top: 4px;
+    font-size: 1em;
+    text-align: center;
+}
+
+/* Универсальный стиль для карточек */
+.item-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative; /* для позиционирования кружка внутри */
+}
+
+.card-image {
+    width: 300px;
+    max-height: 180px;
+    height: auto;
+    background-color: var(--circle-default-bg);
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: none;
+}
+
+/* Медиазапросы */
+@media(max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Контакты убраны -->
+
+<div class="main-container">
+    <!-- Основной контент -->
+    <div class="section-block">
+        <h1>КОРОБКА</h1>
+        <div class="box-grid">
+            <div class="circle-area" style="background-color: black;"></div>
+            <div class="box-text">Krestoplity</div>
+        </div>
+        <div class="box-grid">
+            <a href="grustnyj_carton.html" class="circle-area">
+                <img src="images/безножный копия.png" alt="Грустный мультфильм" class="circle-img" />
+            </a>
+            <div class="box-text">Грустный мультфильм</div>
+        </div>
+        <div class="box-grid">
+            <div class="circle-area">
+                <img src="images/2024-07-12_13-37-56.png" alt="Psychworld" class="circle-img" />
+            </div>
+            <div class="box-text">Psychworld</div>
+        </div>
+    </div>
+    <div class="section-block">
+        <h2>Недавние события</h2>
+        <a href="WHDEW.html" style="text-decoration: none; color: inherit;">
+            <div class="event-item">
+                <!-- Выделенное событие -->
+                <div class="item-card" style="position: relative;">
+                    <div class="highlight-dot"></div> <!-- Жёлтый кружок в нижний правый угол -->
+                    <img src="images/5368852671151937241.jpg" alt="ПЁУКН серия" class="card-image" />
+                    <div>Выпущена ПЁУКН 1 серия</div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
