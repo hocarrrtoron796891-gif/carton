@@ -89,7 +89,6 @@ body {
     display: inline-block;
 }
 
-/* Встроенное видео */
 .video-container {
     margin-top: 30px; 
     width: 100%; 
@@ -102,7 +101,6 @@ body {
     height: auto;
 }
 
-/* Остальной стиль остаётся без изменений */
 .advice-block {
     margin-bottom: 35px;
     font-size: 1.2rem;
@@ -192,6 +190,40 @@ body {
     display: block;
 }
 
+/* Модальное окно для просмотра изображений */
+#imageModal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+#imageModal .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+#imageModal .close:hover {
+  color: #bbb;
+}
+#imageModal img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+}
+
+/* Остальные стили, включая секции, спойлеры и медиазапросы без изменений */
 .credits-section {
     text-align: center;
     max-width: 600px;
@@ -229,7 +261,6 @@ body.dark-mode .participants-list a {
     100% { background-position: 100% 50%; }
 }
 
-/* Медиазапросы для мобильных устройств */
 @media (max-width: 600px) {
     .main-title { font-size: 2rem; }
     .action-buttons { flex-direction: column; }
@@ -237,7 +268,6 @@ body.dark-mode .participants-list a {
     .preview-gallery { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Стиль секции спойлеров */
 .spoilers-section {
     margin-top: 60px;
     padding: 30px;
@@ -316,5 +346,46 @@ body.dark-mode .participants-list a {
     <div class="description-section">
         <p style="color: black;">Абсурд человеческой истории на примере альтернативной реальности</p>
     </div>
+</div>
+
+<!-- Модальное окно для просмотра изображений -->
+<div id="imageModal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage" alt="Полный размер" />
+</div>
+
+<!-- Скрипт для открытия изображений в полном размере -->
+<script>
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const spanClose = document.getElementsByClassName('close')[0];
+
+document.querySelectorAll('.preview-item img').forEach(img => {
+  img.onclick = () => {
+    // Проверка на исключение
+    if (img.src.includes('5195281596632733179.jpg')) {
+      alert('Это изображение нельзя открыть в полном размере.');
+      return;
+    }
+    // Открываем модальное окно
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+  };
+});
+
+// Закрытие по клику на крестик
+spanClose.onclick = () => {
+  modal.style.display = 'none';
+};
+
+// Закрытие при клике вне изображения
+window.onclick = (event) => {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+</script>
+
 </body>
 </html>
