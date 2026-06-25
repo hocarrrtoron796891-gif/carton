@@ -6,7 +6,7 @@
 <style>
 /* Общие переменные и стили как в index */
 :root {
-    --primary-gradient: linear-gradient(135deg, #ff3b3b, #ffa500, #ffff00, #00ff00, #007bff, #8a2be2);
+    --primary-gradient: linear-gradient(135deg, #33754c, #ffffff, #5b0000, #847d00, #004c9e, #8400ff);
     --text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     --bg-color: var(--primary-gradient);
     --text-color: #fff;
@@ -30,7 +30,7 @@ body {
     padding: 40px 20px;
     background: var(--bg-color);
     background-size: 400% 400%;
-    animation: rainbowGradient 5s ease-in-out infinite; /* ускоренная анимация */
+    animation: rainbowGradient 3s ease-in-out infinite; /* ускоренная анимация */
     box-sizing: border-box;
     color: var(--text-color);
     transition: background 0.5s, color 0.3s;
@@ -275,19 +275,17 @@ body.dark-mode .participants-list a {
 </style>
 </head>
 <body>
-<!-- Кнопка переключения темы убрана, можно оставить или удалить -->
-<!-- <button id="themeToggle" class="theme-toggle-btn">Тёмная тема</button> -->
 
 <div class="container">
     <!-- Заголовок -->
-    <h1 class="main-title">Почему Ёжики Умирают<br>Каждую Неделю?</h1>
+    <h1 class="main-title">Почему Ёжики Умирают<br>Каждую Неделю?<br>Все серии</h1>
 
     <!-- Кнопка "Вернуться на главную" -->
     <a href="index.html" class="back-to-main">Вернуться на главную</a>
 
     <!-- Метаданные -->
     <div class="meta-info">
-        Год выпуска: 2026 • Продолжительность: 4 мин 33 сек
+        Год выпуска: 2026 12 июня • Продолжительность: 4 мин 33 сек
     </div>
 
     <!-- Встроенное видео -->
@@ -309,7 +307,7 @@ body.dark-mode .participants-list a {
             смотреть на YouTube
         </a>
         <a href="https://drive.google.com/file/d/1oIcElvqov6QNuQNylP-k-SHAr1ycypw9/view?usp=sharing" class="btn btn-download">
-            Скачать через Google Drive
+            Скачать через Google Drive в хорошем качестве
         </a>
     </div>
 
@@ -359,9 +357,80 @@ body.dark-mode .participants-list a {
     </section>
 </div>
 
-<!-- Скрипт для переключения темы убран, оставляем пустой или удаляем -->
+<!-- Модальное окно для просмотра изображений -->
+<div id="imageModal" style="display:none;">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage" alt="Полный размер" />
+</div>
+
+<!-- Стили для модального окна -->
+<style>
+/* Модальное окно */
+#imageModal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+#imageModal .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+#imageModal .close:hover {
+  color: #bbb;
+}
+#imageModal img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+}
+</style>
+
+<!-- Скрипт для открытия изображений в полном размере, кроме исключенного -->
 <script>
-  // Скрипт убран
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const spanClose = document.getElementsByClassName('close')[0];
+
+document.querySelectorAll('.preview-item img').forEach(img => {
+  img.onclick = () => {
+    // Проверка на исключенное изображение
+    if (img.src.includes('5195281596632733179.jpg')) {
+      alert('Это изображение нельзя открыть в полном размере.');
+      return;
+    }
+    // Открываем модальное окно
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+  };
+});
+
+// Закрытие по клику на крестик
+spanClose.onclick = () => {
+  modal.style.display = 'none';
+};
+
+// Закрытие при клике вне изображения
+window.onclick = (event) => {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
 </script>
+
 </body>
 </html>

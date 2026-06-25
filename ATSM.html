@@ -4,16 +4,10 @@
 <meta charset="UTF-8" />
 <title>О Двух Стоящих Памятниках</title>
 <style>
-/* Устанавливаем весь текст черным по умолчанию */
-body {
-    color: black;
-}
-
-/* Общие переменные и стили как в index, только фон с металлическим эффектом и без переключения темы */
 :root {
-    --metal-gradient: linear-gradient(135deg, #ffffff, #fff222, #222222, #fff000);
+    --primary-gradient: linear-gradient(135deg, #504848, #000000, #ffffff, #596a59, #567a2a, #8a2be2);
     --text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-    --bg-color: linear-gradient(135deg, #222222, #ffffff); /* Начальный градиент */
+    --bg-color: var(--primary-gradient);
     --text-color: #fff;
     --meta-bg: rgba(0,0,0,0.25);
     --btn-youtube-bg: #FF0000;
@@ -22,7 +16,6 @@ body {
     --gallery-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
-/* Основной контейнер */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
@@ -34,19 +27,26 @@ body {
     padding: 40px 20px;
     background: var(--bg-color);
     background-size: 400% 400%;
-    animation: metallicRainbow 15s ease-in-out infinite;
+    animation: rainbowGradient 1s ease-in-out infinite; /* ускоренная анимация */
     box-sizing: border-box;
+    color: var(--text-color);
     transition: background 0.5s, color 0.3s;
 }
 
-/* Анимация для фона (ускоренная) */
-@keyframes metallicRainbow {
+/* Анимация градиента с ускорением */
+@keyframes rainbowGradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Заголовок */
+.container {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
 .main-title {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
@@ -58,7 +58,6 @@ body {
     z-index: 2;
 }
 
-/* Кнопка "Вернуться на главную" */
 .back-to-main {
     display: inline-block;
     margin-top: 20px;
@@ -78,7 +77,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Метаданные */
 .meta-info {
     font-size: 1.2rem;
     opacity: 0.9;
@@ -109,19 +107,17 @@ body {
     margin-bottom: 35px;
     font-size: 1.2rem;
     font-weight: 600;
-    /* Сделать текст черным и четким */
-    text-shadow: none;
-    color: black;
+    text-shadow: var(--text-shadow);
 }
 .rainbow-text {
-    background: none; /* убираем градиент для этого текста */
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: initial;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textRainbow 6s linear infinite;
+    display: inline-block;
     font-weight: 700;
-    color: black; /* делаем текст черным */
 }
 
-/* Кнопки */
 .action-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -170,7 +166,6 @@ body {
     box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }
 
-/* Галерея превью */
 .preview-gallery {
     margin: 50px 0;
     display: grid;
@@ -197,7 +192,6 @@ body {
     display: block;
 }
 
-/* Кредиты */
 .credits-section {
     text-align: center;
     max-width: 600px;
@@ -213,13 +207,23 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
-/* Анимации градиента */
-@keyframes rainbowGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.participants-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 8px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    transition: background 0.3s, transform 0.2s;
 }
+body.dark-mode .participants-list a {
+    color: #ddd;
+}
+.participants-list a:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
 @keyframes textRainbow {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
@@ -260,24 +264,23 @@ body {
 </style>
 </head>
 <body>
-<!-- Удалена кнопка переключения темы -->
 
 <div class="container">
     <!-- Заголовок -->
-    <h1 class="main-title">О Двух Стоящих Памятниках</h1>
+    <h1 class="main-title">О Двух Стоящих<br>Памятниках</h1>
 
     <!-- Кнопка "Вернуться на главную" -->
     <a href="index.html" class="back-to-main">Вернуться на главную</a>
 
     <!-- Метаданные -->
     <div class="meta-info">
-        Год выпуска: 2026 • Продолжительность: 4 мин 33 сек
+        Год выпуска: 2025 23 Сентября • Продолжительность: 2 мин 7 сек
     </div>
 
-    <!-- Встроенное видео из файла ATSM.mp4 -->
+    <!-- Встроенное видео -->
     <div class="video-container">
       <video controls>
-        <source src="https://github.com/hocarrrtoron796891-gif/carton/blob/master/zhat_videos/ATSM.mp4" type="video/mp4" />
+        <source src="zhat_videos/ATSM.mp4" type="video/mp4" />
         Ваш браузер не поддерживает тег видео.
       </video>
     </div>
@@ -289,40 +292,29 @@ body {
 
     <!-- Кнопки действий -->
     <div class="action-buttons">
-        <a href="https://www.youtube.com/watch?v=Xg0zJln3Iiw" target="_blank" class="btn btn-youtube">
+        <a href="https://www.youtube.com/watch?v=4IE_jglNet4&t=4s" target="_blank" class="btn btn-youtube">
             смотреть на YouTube
         </a>
-        <a href="https://drive.google.com/file/d/1oIcElvqov6QNuQNylP-k-SHAr1ycypw9/view?usp=sharing" class="btn btn-download">
-            Скачать через Google Drive
+        <a href="https://drive.google.com/file/d/1g68mwRzroi1EFpgOh5QTLj7TfCkqFgal/view?usp=sharing" class="btn btn-download">
+            Скачать через Google Drive в хорошем качестве
         </a>
     </div>
 
     <!-- Галерея превью -->
     <section class="preview-gallery">
         <div class="preview-item">
-            <img src="images/5429401273255007307.jpg" alt="Кадр 1: О Двух Стоящих Памятниках" />
+            <img src="images/Превьюшка1 копия.png" alt="Кадр 1: О Двух Стоящих Памятниках" />
         </div>
         <div class="preview-item">
-            <img src="images/5368852671151937241.jpg" alt="Кадр 2: О Двух Стоящих Памятниках" />
+            <img src="images/Отбитые напрочь ФОН.png" alt="Кадр 2: О Двух Стоящих Памятниках" />
         </div>
         <div class="preview-item">
-            <img src="images/5269685449700085142.jpg" alt="Кадр 3: О Двух Стоящих Памятниках" />
-        </div>
-        <div class="preview-item">
-            <img src="images/5262976818157915742 (1).jpg" alt="Кадр 4: О Двух Стоящих Памятниках" />
-        </div>
-        <div class="preview-item">
-            <img src="images/5242676569334026312 (1).jpg" alt="Кадр 5: О Двух Стоящих Памятниках" />
-        </div>
-        <div class="preview-item">
-            <img src="images/5393136137070645126.jpg" alt="Кадр 6: О Двух Стоящих Памятниках" />
+            <img src="images/Место для монументальной памяти.png" alt="Кадр 3: О Двух Стоящих Памятниках" />
         </div>
     </section>
-</div>
 
-<!-- Скрипт для анимации фона (если нужно) -->
-<script>
-/* Можно оставить пустым или удалить, так как анимация уже в CSS */
-</script>
+    <div class="description-section">
+        <p style="color: black;">Абсурд человеческой истории на примере альтернативной реальности</p>
+    </div>
 </body>
 </html>
