@@ -30,6 +30,17 @@ body {
     align-items: center;
 }
 
+/* Стиль для видео-превью */
+.video-preview {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Для обычных изображений превью (если есть) */
 .video-thumb {
     width: 100%;
     aspect-ratio: 16/9;
@@ -38,9 +49,6 @@ body {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-}
-.video-thumb:hover {
-    background-color: #555;
 }
 
 .video-title {
@@ -56,62 +64,55 @@ body {
 <body>
 
 <div class="gallery">
-    <!-- Карточка 1 -->
+    <!-- Карточка 1 с видео-превью -->
     <div class="video-card">
-        <div class="video-thumb"></div>
+        <a href="ATSM.html" class="video-thumb-link">
+            <video src="zhat_videos/ATSM.mp4" class="video-preview" muted autoplay loop playsinline></video>
+        </a>
         <div class="video-title">Мультфильм 1</div>
     </div>
-    <!-- Карточка 2 -->
+
+    <!-- Остальные карточки без изменений -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 2</div>
     </div>
-    <!-- Карточка 3 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 3</div>
     </div>
-    <!-- Карточка 4 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 4</div>
     </div>
-    <!-- Карточка 5 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 5</div>
     </div>
-    <!-- Карточка 6 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 6</div>
     </div>
-    <!-- Карточка 7 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 7</div>
     </div>
-    <!-- Карточка 8 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 8</div>
     </div>
-    <!-- Карточка 9 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 9</div>
     </div>
-    <!-- Карточка 10 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 10</div>
     </div>
-    <!-- Карточка 11 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 11</div>
     </div>
-    <!-- Карточка 12 -->
     <div class="video-card">
         <div class="video-thumb"></div>
         <div class="video-title">Мультфильм 12</div>
@@ -119,6 +120,7 @@ body {
 </div>
 
 <script>
+  // Можно оставить, если нужно добавлять обработчики для других элементов
   document.querySelectorAll('.video-thumb').forEach(item => {
     item.addEventListener('click', () => {
       alert('Здесь можно открыть видео или сделать что-то ещё');
