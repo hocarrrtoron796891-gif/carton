@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Грибной Стул Снаружи Изнутри</title>
+<style>
+:root {
+    --primary-gradient: linear-gradient(135deg, #ff0000, #0004ff, #00ff00, #ff00f7, #546519, #8a2be2);
+    --text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    --bg-color: var(--primary-gradient);
+    --text-color: #fff;
+    --meta-bg: rgba(0,0,0,0.25);
+    --btn-youtube-bg: #FF0000;
+    --btn-download-bg: #ffffff;
+    --btn-download-text: #333;
+    --gallery-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background: var(--bg-color);
+    background-size: 400% 400%;
+    animation: rainbowGradient 1s ease-in-out infinite; /* ускоренная анимация */
+    box-sizing: border-box;
+    color: var(--text-color);
+    transition: background 10s, color 0.3s;
+}
+
+/* Анимация градиента с ускорением */
+@keyframes rainbowGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.main-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+.back-to-main {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.back-to-main:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.meta-info {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    text-shadow: var(--text-shadow);
+    background: var(--meta-bg);
+    backdrop-filter: blur(4px);
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+.video-container {
+    margin-top: 30px; 
+    width: 100%; 
+    display: flex; 
+    justify-content: center;
+}
+.video-container video {
+    width: 100%; 
+    max-width: 800px; 
+    height: auto;
+}
+
+.advice-block {
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-shadow: var(--text-shadow);
+}
+.rainbow-text {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textRainbow 6s linear infinite;
+    display: inline-block;
+    font-weight: 700;
+}
+
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+.btn {
+    padding: 16px 36px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.btn:hover::before {
+    opacity: 1;
+}
+.btn-youtube {
+    color: white;
+    background-color: var(--btn-youtube-bg);
+}
+.btn-youtube:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(255,0,0,0.4);
+}
+.btn-download {
+    color: var(--btn-download-text);
+    background-color: var(--btn-download-bg);
+}
+.btn-download:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+.preview-gallery {
+    margin: 50px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 0;
+}
+.preview-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: var(--gallery-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.preview-item:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Модальное окно для просмотра изображений */
+#imageModal {
+  display: none; /* скрыто по умолчанию */
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+#imageModal .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+#imageModal .close:hover {
+  color: #bbb;
+}
+#imageModal img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+}
+
+/* Остальные стили, включая секции, спойлеры и медиазапросы без изменений */
+.credits-section {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    margin-top: 50px;
+    padding-bottom: 30px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+.credits-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.participants-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 8px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    transition: background 0.3s, transform 0.2s;
+}
+body.dark-mode .participants-list a {
+    color: #ddd;
+}
+.participants-list a:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+@keyframes textRainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@media (max-width: 600px) {
+    .main-title { font-size: 2rem; }
+    .action-buttons { flex-direction: column; }
+    .btn { width: 100%; text-align: center; }
+    .preview-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+.spoilers-section {
+    margin-top: 60px;
+    padding: 30px;
+    border-top: 2px dashed rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+.spoilers-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.spoilers-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-gradient);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Заголовок -->
+    <h1 class="main-title">Грибной Стул <br>Снаружи Изнутри</h1>
+
+    <!-- Кнопка "Вернуться на главную" -->
+    <a href="index.html" class="back-to-main">Вернуться на главную</a>
+
+    <!-- Метаданные -->
+    <div class="meta-info">
+        Год выпуска: 2025 11 октября • Продолжительность: 1 мин 41 сек
+    </div>
+
+    <!-- Встроенное видео -->
+    <div class="video-container">
+      <video controls>
+        <source src="zhat_videos/MSSF.mp4" type="video/mp4" />
+        Ваш браузер не поддерживает тег видео.
+      </video>
+    </div>
+
+    <!-- Совет -->
+    <div class="advice-block">
+        <span class="rainbow-text">Включите полноэкранный режим и наденьте наушники</span>
+    </div>
+
+    <!-- Галерея превью -->
+    <section class="preview-gallery">
+        <div class="preview-item">
+            <img src="images/2026-06-25_23-54-01.png" alt="Кадр 1: Грибной Стул Снаружи Изнутри" />
+        </div>
+        <div class="preview-item">
+            <img src="images/2026-06-25_23-54-34.png" alt="Кадр 2: Грибной Стул Снаружи Изнутри" />
+        </div>
+        <div class="preview-item">
+            <img src="images/2026-06-25_23-55-12.png" alt="Кадр 3: Грибной Стул Снаружи Изнутри" />
+        </div>
+        <div class="preview-item">
+            <img src="images/2026-06-25_23-55-24.png" alt="Кадр 4: Грибной Стул Снаружи Изнутри" />
+        </div>
+    </section>
+
+    <div class="description-section">
+        <p style="color: black;">Хранитель</p>
+    </div>
+</div>
+
+<!-- Модальное окно для просмотра изображений -->
+<div id="imageModal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage" alt="Полный размер" />
+</div>
+
+<!-- Скрипт для открытия изображений в полном размере -->
+<script>
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImage');
+const spanClose = document.getElementsByClassName('close')[0];
+
+document.querySelectorAll('.preview-item img').forEach(img => {
+  img.onclick = () => {
+    // Проверка на исключение
+    if (img.src.includes('5195281596632733179.jpg')) {
+      alert('Это изображение нельзя открыть в полном размере.');
+      return;
+    }
+    // Открываем модальное окно
+    modal.style.display = 'block';
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+  };
+});
+
+// Закрытие по клику на крестик
+spanClose.onclick = () => {
+  modal.style.display = 'none';
+};
+
+// Закрытие при клике вне изображения
+window.onclick = (event) => {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+};
+</script>
+
+</body>
+</html>
