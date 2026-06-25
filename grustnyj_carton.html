@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Галерея мультфильмов</title>
+<style>
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.4;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.video-card {
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.video-thumb:hover {
+    background-color: #555;
+}
+
+.video-title {
+    margin-top: 10px;
+    font-size: 1em;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
+</head>
+<body>
+
+<div class="gallery">
+    <!-- Карточка 1 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 1</div>
+    </div>
+    <!-- Карточка 2 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 2</div>
+    </div>
+    <!-- Карточка 3 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 3</div>
+    </div>
+    <!-- Карточка 4 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 4</div>
+    </div>
+    <!-- Карточка 5 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 5</div>
+    </div>
+    <!-- Карточка 6 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 6</div>
+    </div>
+    <!-- Карточка 7 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 7</div>
+    </div>
+    <!-- Карточка 8 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 8</div>
+    </div>
+    <!-- Карточка 9 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 9</div>
+    </div>
+    <!-- Карточка 10 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 10</div>
+    </div>
+    <!-- Карточка 11 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 11</div>
+    </div>
+    <!-- Карточка 12 -->
+    <div class="video-card">
+        <div class="video-thumb"></div>
+        <div class="video-title">Мультфильм 12</div>
+    </div>
+</div>
+
+<script>
+  document.querySelectorAll('.video-thumb').forEach(item => {
+    item.addEventListener('click', () => {
+      alert('Здесь можно открыть видео или сделать что-то ещё');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>О Двух Стоящих Памятниках</title>
+<style>
+/* Устанавливаем весь текст черным по умолчанию */
+body {
+    color: black;
+}
+
+/* Общие переменные и стили как в index, только фон с металлическим эффектом и без переключения темы */
+:root {
+    --metal-gradient: linear-gradient(135deg, #222, #fff, #222, #fff);
+    --text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    --bg-color: linear-gradient(135deg, #222, #fff); /* Начальный градиент */
+    --text-color: #fff;
+    --meta-bg: rgba(0,0,0,0.25);
+    --btn-youtube-bg: #FF0000;
+    --btn-download-bg: #ffffff;
+    --btn-download-text: #333;
+    --gallery-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* Основной контейнер */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    background: var(--bg-color);
+    background-size: 400% 400%;
+    animation: metallicRainbow 15s ease-in-out infinite;
+    box-sizing: border-box;
+    transition: background 0.5s, color 0.3s;
+}
+
+/* Анимация для фона (ускоренная) */
+@keyframes metallicRainbow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Заголовок */
+.main-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Кнопка "Вернуться на главную" */
+.back-to-main {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.back-to-main:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Метаданные */
+.meta-info {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    text-shadow: var(--text-shadow);
+    background: var(--meta-bg);
+    backdrop-filter: blur(4px);
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* Совет */
+.advice-block {
+    margin-bottom: 35px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    /* Сделать текст черным и четким */
+    text-shadow: none;
+    color: black;
+}
+.rainbow-text {
+    background: none; /* убираем градиент для этого текста */
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    font-weight: 700;
+    color: black; /* делаем текст черным */
+}
+
+/* Кнопки */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+.btn {
+    padding: 16px 36px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,255,0.1);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.btn:hover::before {
+    opacity: 1;
+}
+.btn-youtube {
+    color: white;
+    background-color: var(--btn-youtube-bg);
+}
+.btn-youtube:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(255,0,0,0.4);
+}
+.btn-download {
+    color: var(--btn-download-text);
+    background-color: var(--btn-download-bg);
+}
+.btn-download:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+/* Галерея превью */
+.preview-gallery {
+    margin: 50px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    padding: 0;
+}
+.preview-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: var(--gallery-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.preview-item:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+.preview-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Кредиты */
+.credits-section {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    margin-top: 50px;
+    padding-bottom: 30px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+.credits-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Анимации градиента */
+@keyframes rainbowGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes textRainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 600px) {
+    .main-title { font-size: 2rem; }
+    .action-buttons { flex-direction: column; }
+    .btn { width: 100%; text-align: center; }
+    .preview-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Стиль секции спойлеров */
+.spoilers-section {
+    margin-top: 60px;
+    padding: 30px;
+    border-top: 2px dashed rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+.spoilers-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    position: relative;
+}
+.spoilers-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-gradient);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+body.dark-mode .spoilers-title::after {
+    background: linear-gradient(135deg, #ff3b3b, #ffa500, #ffff00, #00ff00, #007bff, #8a2be2);
+}
+.spoilers-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.spoilers-item {
+    aspect-ratio: 4/3;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    box-shadow: var(--gallery-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.spoilers-item:hover {
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+.spoilers-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+</style>
+</head>
+<body>
+<!-- Удалена кнопка переключения темы -->
+
+<div class="container">
+    <!-- Заголовок -->
+    <h1 class="main-title">О Двух Стоящих Памятниках</h1>
+
+    <!-- Кнопка "Вернуться на главную" -->
+    <a href="index.html" class="back-to-main">Вернуться на главную</a>
+
+    <!-- Метаданные -->
+    <div class="meta-info">
+        Год выпуска: 2026 • Продолжительность: 4 мин 33 сек
+    </div>
+
+    <!-- Совет -->
+    <div class="advice-block">
+        <span class="rainbow-text">Включите полноэкранный режим и наденьте наушники</span>
+    </div>
+
+    <!-- Кнопки действий -->
+    <div class="action-buttons">
+        <a href="https://www.youtube.com/watch?v=Xg0zJln3Iiw" target="_blank" class="btn btn-youtube">
+            смотреть на YouTube
+        </a>
+        <a href="https://drive.google.com/file/d/1oIcElvqov6QNuQNylP-k-SHAr1ycypw9/view?usp=sharing" class="btn btn-download">
+            Скачать через Google Drive
+        </a>
+    </div>
+
+    <!-- Галерея превью -->
+    <section class="preview-gallery">
+        <div class="preview-item">
+            <img src="images/5429401273255007307.jpg" alt="Кадр 1: О Двух Стоящих Памятниках" />
+        </div>
+        <div class="preview-item">
+            <img src="images/5368852671151937241.jpg" alt="Кадр 2: О Двух Стоящих Памятниках" />
+        </div>
+        <div class="preview-item">
+            <img src="images/5269685449700085142.jpg" alt="Кадр 3: О Двух Стоящих Памятниках" />
+        </div>
+        <div class="preview-item">
+            <img src="images/5262976818157915742 (1).jpg" alt="Кадр 4: О Двух Стоящих Памятниках" />
+        </div>
+        <div class="preview-item">
+            <img src="images/5242676569334026312 (1).jpg" alt="Кадр 5: О Двух Стоящих Памятниках" />
+        </div>
+        <div class="preview-item">
+            <img src="images/5393136137070645126.jpg" alt="Кадр 6: О Двух Стоящих Памятниках" />
+        </div>
+    </section>
+</div>
+
+<!-- Скрипт для анимации фона (если нужно) -->
+<script>
+/* Можно оставить пустым или удалить, так как анимация уже в CSS */
+</script>
+</body>
+</html>
