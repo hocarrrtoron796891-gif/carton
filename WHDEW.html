@@ -342,15 +342,15 @@ body.dark-mode .participants-list a {
             <a href="https://t.me/PostFaktoriym" target="_blank">Жидкий Гансалис</a> •
             <a href="https://t.me/chaoticartevil" target="_blank">Lindisfarne</a> •
             <a href="https://t.me/MC_SADDD" target="_blank">SADD</a> •
-            <a href="https://t.me/Psenoks" target="_blank">Psenkoks</a>
+            <a href="https://t.me/Psenkoks" target="_blank">Psenkoks</a>
         </div>
     </div>
 
     <!-- Спойлеры -->
-    <section class="spoilers-section">
+    <section class="preview-gallery">
         <h2 class="spoilers-title">Спойлеры ко второй части</h2>
         <div class="spoilers-gallery">
-            <div class="spoilers-item">
+            <div class="preview-item">
                 <img src="images/5195281596632733179.jpg" alt="Спойлер ко второй части" />
             </div>
         </div>
@@ -399,7 +399,7 @@ body.dark-mode .participants-list a {
 }
 </style>
 
-<!-- Скрипт для открытия изображений в полном размере, кроме исключенного -->
+<!-- Скрипт для открытия изображений в полном размере -->
 <script>
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
@@ -407,12 +407,7 @@ const spanClose = document.getElementsByClassName('close')[0];
 
 document.querySelectorAll('.preview-item img').forEach(img => {
   img.onclick = () => {
-    // Проверка на исключенное изображение
-    if (img.src.includes('5195281596632733179.jpg')) {
-      alert('Это изображение нельзя открыть в полном размере.');
-      return;
-    }
-    // Открываем модальное окно
+    // Открываем модальное окно для всех изображений
     modal.style.display = 'block';
     modalImg.src = img.src;
     modalImg.alt = img.alt;
