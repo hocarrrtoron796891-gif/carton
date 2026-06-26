@@ -42,8 +42,8 @@ body.loaded #loading {
     margin-top: 10px;
 }
 
+/* Карточки видео */
 .video-card {
-    /* Убрали серый фон (#1e1e1e), сделали прозрачным */
     background-color: transparent; 
     padding: 10px;
     border-radius: 0;
@@ -51,31 +51,24 @@ body.loaded #loading {
     flex-direction: column;
     align-items: center;
     position: relative;
-    
-    /* Базовые стили для всех карточек */
-    backdrop-filter: blur(2px); /* Легкое размытие фона под карточкой для контраста */
+    backdrop-filter: blur(2px);
 }
 
-/* --- НОВЫЙ СТИЛЬ ДЛЯ ЯРКИХ КАРТОЧЕК (1 и 6) --- */
+/* --- Яркие выделенные карточки --- */
 .highlighted-card {
-    /* Радужный градиент */
     background: linear-gradient(45deg, #ff00cc, #3333ff, #00ffff, #00ff00, #ffff00, #ff0000);
-    background-size: 400% 400%; /* Размер фона больше блока для анимации */
-    
-    /* Анимация перелива */
+    background-size: 400% 400%;
     animation: flow 10s ease infinite;
-    
-    /* Чтобы текст и видео были поверх градиента, но сам градиент был виден */
     position: relative; 
     z-index: 1;
 }
 
+/* Анимация градиента */
 @keyframes flow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-/* ------------------------------------------------ */
 
 /* Стиль для видео-превью */
 .video-preview {
@@ -85,13 +78,11 @@ body.loaded #loading {
     display: block;
     cursor: pointer;
     border-radius: 4px;
-    /* Важно: z-index ниже, чем у градиента, чтобы градиент лежал "под" видео, 
-       но так как фон прозрачный, видео будет видно, а рамка будет цветной */
     position: relative;
     z-index: 2; 
 }
 
-/* Для обычных изображений превью (если есть) */
+/* Для обычных изображений-превью */
 .video-thumb {
     width: 100%;
     aspect-ratio: 16/9;
@@ -102,6 +93,7 @@ body.loaded #loading {
     cursor: pointer;
 }
 
+/* Название видео */
 .video-title {
     margin-top: 10px;
     font-size: 1em;
@@ -109,30 +101,29 @@ body.loaded #loading {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* Текст должен быть поверх всего */
     position: relative;
     z-index: 3;
-    color: #ffffff; /* Белый текст для читаемости на любом фоне */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8); /* Тень для читаемости */
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-/* Звёздочка внутри видео */
-.star-container {
-    position: absolute;
-    top: 10%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: 4; /* Поверх всего */
+/* --- Стиль для особой карточки с выделением --- */
+.special-card {
+    grid-column: span 2; /* Расширяет на две колонки */
+    /* Можно добавить padding или тень, если нужно */
 }
 
-.star {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-image: url('icons/star-svgrepo-com.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+.special-card .video-title {
+    font-size: 1.5em; /* Сделать заголовок крупнее */
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Ограничение по высоте для видео внутри выделенной карточки */
+.special-card .video-preview {
+    max-height: 300px;
+    width: 100%;
 }
 </style>
 </head>
@@ -140,29 +131,20 @@ body.loaded #loading {
 <div id="loading">Контент грузится для вас</div>
 
 <div class="gallery">
-    <!-- Первый мультфильм (Добавлен класс highlighted-card) -->
-    <div class="video-card highlighted-card">
-        <a href="ATSM.html" class="video-thumb-link">
-            <video src="zhat_videos/ATSM.mp4" class="video-preview" muted autoplay loop playsinline></video>
+    <!-- Видео "Почему Ёжики Умирают Каждую Неделю?" в начале -->
+    <div class="video-card highlighted-card special-card">
+        <a href="WHDEW.html" class="video-thumb-link">
+            <video src="zhat_videos/цкц.mp4" class="video-preview" muted autoplay loop playsinline></video>
         </a>
-        <!-- Звёздочка -->
-        <div class="star-container">
-            <div class="star"></div>
-        </div>
-        <div class="video-title">О двух стоящих памятниках</div>
+        <div class="video-title">Почему Ёжики Умирают Каждую Неделю?</div>
     </div>
 
+    <!-- Остальные видео в обратном порядке -->
     <div class="video-card">
-        <a href="AGH.html" class="video-thumb-link">
-            <video src="zhat_videos/AGH.mp4" class="video-preview" muted autoplay loop playsinline></video>
+        <a href="SMIR.html" class="video-thumb-link">
+            <video src="zhat_videos/Smir.mp4" class="video-preview" muted autoplay loop playsinline></video>
         </a>
-        <div class="video-title">О великом ёжике</div>
-    </div>
-    <div class="video-card">
-        <a href="MSSF.html" class="video-thumb-link">
-            <video src="zhat_videos/MSSF.mp4" class="video-preview" muted autoplay loop playsinline></video>
-        </a>
-        <div class="video-title">Грибной стул снаружи изнутри</div>
+        <div class="video-title">Смирение</div>
     </div>
     <div class="video-card">
         <a href="Burs.html" class="video-thumb-link">
@@ -171,25 +153,22 @@ body.loaded #loading {
         <div class="video-title">Битва в психоделическом лесу</div>
     </div>
     <div class="video-card">
-        <a href="SMIR.html" class="video-thumb-link">
-            <video src="zhat_videos/Smir.mp4" class="video-preview" muted autoplay loop playsinline></video>
+        <a href="MSSF.html" class="video-thumb-link">
+            <video src="zhat_videos/MSSF.mp4" class="video-preview" muted autoplay loop playsinline></video>
         </a>
-        <div class="video-title">Смирение</div>
-    </div>
-    <!-- Шестой мультфильм (Добавлен класс highlighted-card) -->
-    <div class="video-card highlighted-card">
-        <a href="WHDEW.html" class="video-thumb-link">
-            <video src="zhat_videos/цкц.mp4" class="video-preview" muted autoplay loop playsinline></video>
-        </a>
-        <!-- Звёздочка -->
-        <div class="star-container">
-            <div class="star"></div>
-        </div>
-        <div class="video-title">Почему Ёжики Умирают Каждую Неделю?</div>
+        <div class="video-title">Грибной стул снаружи изнутри</div>
     </div>
     <div class="video-card">
-        <div class="video-thumb"></div>
-        <div class="video-title">по...</div>
+        <a href="AGH.html" class="video-thumb-link">
+            <video src="zhat_videos/AGH.mp4" class="video-preview" muted autoplay loop playsinline></video>
+        </a>
+        <div class="video-title">О великом ёжике</div>
+    </div>
+    <div class="video-card highlighted-card">
+        <a href="ATSM.html" class="video-thumb-link">
+            <video src="zhat_videos/ATSM.mp4" class="video-preview" muted autoplay loop playsinline></video>
+        </a>
+        <div class="video-title">О двух стоящих памятниках</div>
     </div>
 </div>
 
