@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <title>Грибной Стул Снаружи Изнутри</title>
 <style>
+/* Общие переменные и стили как в index */
 :root {
     --primary-gradient: linear-gradient(135deg, #ff0000, #0004ff, #00ff00, #ff00f7, #546519, #8a2be2);
     --text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
@@ -16,6 +17,26 @@
     --gallery-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
+/* Заглушка загрузки */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: #fff;
+    z-index: 9999;
+}
+body.loaded #loading {
+    display: none;
+}
+
+/* Остальной стиль без изменений */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
@@ -27,7 +48,7 @@ body {
     padding: 40px 20px;
     background: var(--bg-color);
     background-size: 400% 400%;
-    animation: rainbowGradient 1s ease-in-out infinite; /* ускоренная анимация */
+    animation: rainbowGradient 1s ease-in-out infinite;
     box-sizing: border-box;
     color: var(--text-color);
     transition: background 10s, color 0.3s;
@@ -40,6 +61,7 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Остальные стили остаются без изменений */
 .container {
     max-width: 900px;
     width: 100%;
@@ -295,6 +317,9 @@ body.dark-mode .participants-list a {
 </head>
 <body>
 
+<!-- Заглушка -->
+<div id="loading">Контент грузится для вас</div>
+
 <div class="container">
     <!-- Заголовок -->
     <h1 class="main-title">Грибной Стул <br>Снаружи Изнутри</h1>
@@ -378,6 +403,11 @@ window.onclick = (event) => {
     modal.style.display = 'none';
   }
 };
+
+// Заглушка загрузки
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
 </script>
 
 </body>
